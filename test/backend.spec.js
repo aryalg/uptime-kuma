@@ -1,12 +1,12 @@
 // ⚠️⚠️⚠️ Deprecated: Jest is not recommended for testing backend code anymore, please create a new test file in ./test/backend-test which are native Node.js test files.
 
-const { genSecret, DOWN, log} = require("../src/util");
+const { genSecret, DOWN, log } = require("../src/util");
 const utilServer = require("../server/util-server");
 const Discord = require("../server/notification-providers/discord");
 const axios = require("axios");
 const { UptimeKumaServer } = require("../server/uptime-kuma-server");
 const Database = require("../server/database");
-const {Settings} = require("../server/settings");
+const { Settings } = require("../server/settings");
 const fs = require("fs");
 const dayjs = require("dayjs");
 dayjs.extend(require("dayjs/plugin/utc"));
@@ -187,7 +187,7 @@ describe("Test Discord Notification Provider", () => {
 
         await discordProvider.send(
             {
-                discordUsername: "Uptime Kuma",
+                discordUsername: "C8 Digital Server Monitoring",
                 discordWebhookUrl: "https://discord.com",
             },
             "test message",
@@ -207,7 +207,7 @@ describe("Test Discord Notification Provider", () => {
         expect(axios.post.mock.lastCall[1].embeds[0].fields[1].value).toBe(hostname);
     });
 
-    it.each([ "dns", "port", "steam" ])("should send hostname for %p monitors", async (type) => {
+    it.each(["dns", "port", "steam"])("should send hostname for %p monitors", async (type) => {
         await sendNotification(hostname, port, type);
         expect(axios.post.mock.lastCall[1].embeds[0].fields[1].value).toBe(`${hostname}:${port}`);
     });
@@ -215,22 +215,22 @@ describe("Test Discord Notification Provider", () => {
 
 describe("The function filterAndJoin", () => {
     it("should join and array of strings to one string", () => {
-        const result = utilServer.filterAndJoin([ "one", "two", "three" ]);
+        const result = utilServer.filterAndJoin(["one", "two", "three"]);
         expect(result).toBe("onetwothree");
     });
 
     it("should join strings using a given connector", () => {
-        const result = utilServer.filterAndJoin([ "one", "two", "three" ], "-");
+        const result = utilServer.filterAndJoin(["one", "two", "three"], "-");
         expect(result).toBe("one-two-three");
     });
 
     it("should filter null, undefined and empty strings before joining", () => {
-        const result = utilServer.filterAndJoin([ undefined, "", "three" ], "--");
+        const result = utilServer.filterAndJoin([undefined, "", "three"], "--");
         expect(result).toBe("three");
     });
 
     it("should return an empty string if all parts are filtered out", () => {
-        const result = utilServer.filterAndJoin([ undefined, "", "" ], "--");
+        const result = utilServer.filterAndJoin([undefined, "", ""], "--");
         expect(result).toBe("");
     });
 });
@@ -241,7 +241,7 @@ describe("Test uptimeKumaServer.getClientIP()", () => {
             "data-dir": "./data/test"
         });
 
-        if (! fs.existsSync(Database.sqlitePath)) {
+        if (!fs.existsSync(Database.sqlitePath)) {
             log.info("server", "Copying Database");
             fs.copyFileSync(Database.templatePath, Database.sqlitePath);
         }

@@ -1,4 +1,4 @@
-console.log("== Uptime Kuma Reset Password Tool ==");
+console.log("== C8 Digital Server Monitoring Reset Password Tool ==");
 
 const Database = require("../server/database");
 const { R } = require("redbean-node");
@@ -20,7 +20,7 @@ const main = async () => {
         // No need to actually reset the password for testing, just make sure no connection problem. It is ok for now.
         if (!process.env.TEST_BACKEND) {
             const user = await R.findOne("user");
-            if (! user) {
+            if (!user) {
                 throw new Error("user not found, have you installed?");
             }
 

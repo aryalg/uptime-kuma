@@ -114,7 +114,7 @@
     "needPushEvery": "Hämta denna URL var {0} sekund",
     "pushOptionalParams": "Valfria parametrar: {0}",
     "disableauth.message1": "Vill du verkligen <strong>avaktivera autentisering</strong>?",
-    "disableauth.message2": "Det är designat för när en <strong>tredjeparts autentiseringstjänst</strong> såsom Cloudflare Access eller Authelia används framför Uptime Kuma.",
+    "disableauth.message2": "Det är designat för när en <strong>tredjeparts autentiseringstjänst</strong> såsom Cloudflare Access eller Authelia används framför C8 Digital Server Monitoring.",
     "Please use this option carefully!": "Använd denna funktion varsamt!",
     "Import Backup": "Importera backup",
     "Affected Monitors": "Påverkade övervakare",

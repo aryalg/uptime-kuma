@@ -6,12 +6,12 @@
 // Backend uses the compiled file util.js
 // Frontend uses util.ts
 
-import * as dayjs  from "dayjs";
+import * as dayjs from "dayjs";
 import * as timezone from "dayjs/plugin/timezone";
 import * as utc from "dayjs/plugin/utc";
 
 export const isDev = process.env.NODE_ENV === "development";
-export const appName = "Uptime Kuma";
+export const appName = "C8 Digital Server Monitoring";
 export const DOWN = 0;
 export const UP = 1;
 export const PENDING = 2;
@@ -83,7 +83,7 @@ class Logger {
      *     "info_monitor",
      *  ]
      */
-    hideLog : any = {
+    hideLog: any = {
         info: [],
         warn: [],
         error: [],
@@ -169,7 +169,7 @@ class Logger {
      * @param msg Message to write
      */
     error(module: string, msg: any) {
-       this.log(module, msg, "error");
+        this.log(module, msg, "error");
     }
 
     /**
@@ -178,7 +178,7 @@ class Logger {
      * @param msg Message to write
      */
     debug(module: string, msg: any) {
-       this.log(module, msg, "debug");
+        this.log(module, msg, "debug");
     }
 
     /**
@@ -194,7 +194,7 @@ class Logger {
             finalMessage = `${msg}: ${exception}`
         }
 
-        this.log(module, finalMessage , "error");
+        this.log(module, finalMessage, "error");
     }
 }
 
@@ -279,8 +279,8 @@ let getRandomBytes = (
             };
         }
 
-         // Node
-        : function() {
+        // Node
+        : function () {
             return require("crypto").randomBytes;
         }
 )();
@@ -292,7 +292,7 @@ let getRandomBytes = (
  * @param max Maximum value of integer
  * @returns Cryptographically suitable random integer
  */
-export function getCryptoRandomInt(min: number, max: number):number {
+export function getCryptoRandomInt(min: number, max: number): number {
 
     // synchronous version of: https://github.com/joepie91/node-random-number-csprng
 
@@ -316,7 +316,7 @@ export function getCryptoRandomInt(min: number, max: number):number {
     let randomValue = 0
 
     for (let i = 0; i < bytesNeeded; i++) {
-	    randomValue |= randomBytes[i] << 8 * i
+        randomValue |= randomBytes[i] << 8 * i
     }
 
     randomValue = randomValue & mask;
@@ -337,7 +337,7 @@ export function genSecret(length = 64) {
     let secret = "";
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charsLength = chars.length;
-    for ( let i = 0; i < length; i++ ) {
+    for (let i = 0; i < length; i++) {
         secret += chars.charAt(getCryptoRandomInt(0, charsLength - 1));
     }
     return secret;
@@ -380,7 +380,7 @@ export function parseTimeObject(time: string) {
         throw new Error("parseVueDatePickerTimeFormat: Invalid Time");
     }
 
-    let obj =  {
+    let obj = {
         hours: parseInt(array[0]),
         minutes: parseInt(array[1]),
         seconds: 0,
@@ -394,7 +394,7 @@ export function parseTimeObject(time: string) {
 /**
  * @returns string e.g. 12:00
  */
-export function parseTimeFromTimeObject(obj : any) {
+export function parseTimeFromTimeObject(obj: any) {
     if (!obj) {
         return obj;
     }
@@ -404,7 +404,7 @@ export function parseTimeFromTimeObject(obj : any) {
     result += obj.hours.toString().padStart(2, "0") + ":" + obj.minutes.toString().padStart(2, "0")
 
     if (obj.seconds) {
-        result += ":" +  obj.seconds.toString().padStart(2, "0")
+        result += ":" + obj.seconds.toString().padStart(2, "0")
     }
 
     return result;
@@ -415,21 +415,21 @@ export function parseTimeFromTimeObject(obj : any) {
  * @param input Date
  * @returns ISO Date time
  */
-export function isoToUTCDateTime(input : string) {
+export function isoToUTCDateTime(input: string) {
     return dayjs(input).utc().format(SQL_DATETIME_FORMAT);
 }
 
 /**
  * @param input
  */
-export function utcToISODateTime(input : string) {
+export function utcToISODateTime(input: string) {
     return dayjs.utc(input).toISOString();
 }
 
 /**
  * For SQL_DATETIME_FORMAT
  */
-export function utcToLocal(input : string, format = SQL_DATETIME_FORMAT) {
+export function utcToLocal(input: string, format = SQL_DATETIME_FORMAT) {
     return dayjs.utc(input).local().format(format);
 }
 
@@ -439,6 +439,6 @@ export function utcToLocal(input : string, format = SQL_DATETIME_FORMAT) {
  * @param format Format to return
  * @returns Date in requested format
  */
-export function localToUTC(input : string, format = SQL_DATETIME_FORMAT) {
+export function localToUTC(input: string, format = SQL_DATETIME_FORMAT) {
     return dayjs(input).utc().format(format);
 }

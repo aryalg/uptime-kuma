@@ -13,9 +13,9 @@ At this moment, I DO NOT accept other bug bounty platforms, because I am not fam
 
 ## Supported Versions
 
-### Uptime Kuma Versions
+### C8 Digital Server Monitoring Versions
 
-You should use or upgrade to the latest version of Uptime Kuma. All `1.X.X` versions are upgradable to the latest version.
+You should use or upgrade to the latest version of C8 Digital Server Monitoring. All `1.X.X` versions are upgradable to the latest version.
 
 ### Upgradable Docker Tags
 

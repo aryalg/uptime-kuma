@@ -13,7 +13,7 @@ class FlashDuty extends NotificationProvider {
     async send(notification, msg, monitorJSON = null, heartbeatJSON = null) {
         try {
             if (heartbeatJSON == null) {
-                const title = "Uptime Kuma Alert";
+                const title = "C8 Digital Server Monitoring Alert";
                 const monitor = {
                     type: "ping",
                     url: msg,
@@ -23,13 +23,13 @@ class FlashDuty extends NotificationProvider {
             }
 
             if (heartbeatJSON.status === UP) {
-                const title = "Uptime Kuma Monitor ✅ Up";
+                const title = "C8 Digital Server Monitoring Monitor ✅ Up";
 
                 return this.postNotification(notification, title, heartbeatJSON.msg, monitorJSON, "Ok");
             }
 
             if (heartbeatJSON.status === DOWN) {
-                const title = "Uptime Kuma Monitor 🔴 Down";
+                const title = "C8 Digital Server Monitoring Monitor 🔴 Down";
                 return this.postNotification(notification, title, heartbeatJSON.msg, monitorJSON, notification.flashdutySeverity);
             }
         } catch (error) {
@@ -71,7 +71,8 @@ class FlashDuty extends NotificationProvider {
                 title,
                 event_status: eventStatus || "Info",
                 alert_key: String(monitorInfo.id) || Math.random().toString(36).substring(7),
-                labels: monitorInfo?.tags?.reduce((acc, item) => ({ ...acc,
+                labels: monitorInfo?.tags?.reduce((acc, item) => ({
+                    ...acc,
                     [item.name]: item.value
                 }), { resource: this.genMonitorUrl(monitorInfo) }),
             }
@@ -79,7 +80,7 @@ class FlashDuty extends NotificationProvider {
 
         const baseURL = await setting("primaryBaseURL");
         if (baseURL && monitorInfo) {
-            options.client = "Uptime Kuma";
+            options.client = "C8 Digital Server Monitoring";
             options.client_url = baseURL + getMonitorRelativeURL(monitorInfo.id);
         }
 

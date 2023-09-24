@@ -49,7 +49,7 @@ class Slack extends NotificationProvider {
                 return okMsg;
             }
 
-            const textMsg = "Uptime Kuma Alert";
+            const textMsg = "C8 Digital Server Monitoring Alert";
             let data = {
                 "text": `${textMsg}\n${msg}`,
                 "channel": notification.slackchannel,
@@ -97,7 +97,7 @@ class Slack extends NotificationProvider {
                             "type": "button",
                             "text": {
                                 "type": "plain_text",
-                                "text": "Visit Uptime Kuma",
+                                "text": "Visit C8 Digital Server Monitoring",
                             },
                             "value": "Uptime-Kuma",
                             "url": baseURL + getMonitorRelativeURL(monitorJSON.id),

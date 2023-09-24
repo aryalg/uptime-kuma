@@ -1,9 +1,9 @@
 /*
- * Uptime Kuma Server
+ * C8 Digital Server Monitoring Server
  * node "server/server.js"
  * DO NOT require("./server") in other modules, it likely creates circular dependency!
  */
-console.log("Welcome to Uptime Kuma");
+console.log("Welcome to C8 Digital Server Monitoring");
 
 // As the log function need to use dayjs, it should be very top
 const dayjs = require("dayjs");
@@ -25,7 +25,7 @@ console.log(`Your Node.js version: ${nodeVersion}`);
 const semver = require("semver");
 const requiredNodeVersionsComma = requiredNodeVersions.split("||").map((version) => version.trim()).join(", ");
 
-// Exit Uptime Kuma immediately if the Node.js version is banned
+// Exit C8 Digital Server Monitoring immediately if the Node.js version is banned
 if (semver.satisfies(nodeVersion, bannedNodeVersions)) {
     console.error("\x1b[31m%s\x1b[0m", `Error: Your Node.js version: ${nodeVersion} is not supported, please upgrade your Node.js to ${requiredNodeVersionsComma}.`);
     process.exit(-1);
@@ -40,11 +40,11 @@ const args = require("args-parser")(process.argv);
 const { sleep, log, getRandomInt, genSecret, isDev } = require("../src/util");
 const config = require("./config");
 
-log.info("server", "Welcome to Uptime Kuma");
+log.info("server", "Welcome to C8 Digital Server Monitoring");
 log.debug("server", "Arguments");
 log.debug("server", args);
 
-if (! process.env.NODE_ENV) {
+if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = "production";
 }
 
@@ -119,7 +119,7 @@ if (hostname) {
     log.info("server", "Custom hostname: " + hostname);
 }
 
-const port = [ args.port, process.env.UPTIME_KUMA_PORT, process.env.PORT, 3001 ]
+const port = [args.port, process.env.UPTIME_KUMA_PORT, process.env.PORT, 3001]
     .map(portValue => parseInt(portValue))
     .find(portValue => !isNaN(portValue));
 
@@ -640,7 +640,7 @@ let needSetup = false;
                 }
 
                 if ((await R.knex("user").count("id as count").first()).count !== 0) {
-                    throw new Error("Uptime Kuma has been initialized. If you want to run setup again, please delete the database.");
+                    throw new Error("C8 Digital Server Monitoring has been initialized. If you want to run setup again, please delete the database.");
                 }
 
                 let user = R.dispense("user");
@@ -726,7 +726,7 @@ let needSetup = false;
                 let removeGroupChildren = false;
                 checkLogin(socket);
 
-                let bean = await R.findOne("monitor", " id = ? ", [ monitor.id ]);
+                let bean = await R.findOne("monitor", " id = ? ", [monitor.id]);
 
                 if (bean.user_id !== socket.userID) {
                     throw new Error("Permission denied.");
@@ -1057,7 +1057,7 @@ let needSetup = false;
             try {
                 checkLogin(socket);
 
-                let bean = await R.findOne("tag", " id = ? ", [ tag.id ]);
+                let bean = await R.findOne("tag", " id = ? ", [tag.id]);
                 if (bean == null) {
                     callback({
                         ok: false,
@@ -1088,7 +1088,7 @@ let needSetup = false;
             try {
                 checkLogin(socket);
 
-                await R.exec("DELETE FROM tag WHERE id = ? ", [ tagID ]);
+                await R.exec("DELETE FROM tag WHERE id = ? ", [tagID]);
 
                 callback({
                     ok: true,
@@ -1477,7 +1477,7 @@ let needSetup = false;
                         const exists = proxies.find(item => item.id === proxy.id);
 
                         // Do not process when proxy already exists in import handle is skip and keep
-                        if ([ "skip", "keep" ].includes(importHandle) && !exists) {
+                        if (["skip", "keep"].includes(importHandle) && !exists) {
                             return;
                         }
 
@@ -1785,7 +1785,7 @@ async function checkOwner(userID, monitorID) {
         userID,
     ]);
 
-    if (! row) {
+    if (!row) {
         throw new Error("You do not own this monitor.");
     }
 }
@@ -1847,7 +1847,7 @@ async function initDatabase(testMode = false) {
         "jwtSecret",
     ]);
 
-    if (! jwtSecretBean) {
+    if (!jwtSecretBean) {
         log.info("server", "JWT secret is not found, generate one.");
         jwtSecretBean = await initJWTSecret();
         log.info("server", "Stored JWT secret into database");
@@ -1855,7 +1855,7 @@ async function initDatabase(testMode = false) {
         log.info("server", "Load JWT secret from database.");
     }
 
-    // If there is no record in user table, it is a new Uptime Kuma instance, need to setup
+    // If there is no record in user table, it is a new C8 Digital Server Monitoring instance, need to setup
     if ((await R.knex("user").count("id as count").first()).count === 0) {
         log.info("server", "No user, need setup");
         needSetup = true;

@@ -52,7 +52,7 @@ class Bark extends NotificationProvider {
      * @returns {string} Additional URL parameters
      */
     appendAdditionalParameters(notification, postUrl) {
-        // set icon to uptime kuma icon, 11kb should be fine
+        // set icon to C8 Digital Server Monitoring icon, 11kb should be fine
         postUrl += "?icon=" + barkNotificationAvatar;
         // grouping all our notifications
         if (notification.barkGroup != null) {

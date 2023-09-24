@@ -1,10 +1,10 @@
-<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M490.4 235.64C544.09 358.38 544.09 435.34 490.4 466.5C409.85 513.24 199.96 527.49 139.54 455.64C99.2601 407.74 99.2601 334.4 139.54 235.64C180.5 168.18 238.71 134.45 314.17 134.45C389.64 134.45 448.38 168.18 490.4 235.64Z" fill="url(#paint0_linear_381_799)"/>
-<path d="M490.4 235.64C544.09 358.38 544.09 435.34 490.4 466.5C409.85 513.24 199.96 527.49 139.54 455.64C99.2601 407.74 99.2601 334.4 139.54 235.64C180.5 168.18 238.71 134.45 314.17 134.45C389.64 134.45 448.38 168.18 490.4 235.64Z" stroke="#F2F2F2" stroke-opacity="0.51" stroke-width="200"/>
-<defs>
-<linearGradient id="paint0_linear_381_799" x1="259.78" y1="261.15" x2="463.85" y2="456.49" gradientUnits="userSpaceOnUse">
-<stop stop-color="#5CDD8B"/>
-<stop offset="1" stop-color="#86E6A9"/>
-</linearGradient>
-</defs>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M280 360H120V400H280V360Z" fill="#74C7FF"/>
+<path d="M280 280V320H120V280H0V240H200V280H280Z" fill="#74C7FF"/>
+<path d="M400 160H0V200H400V160Z" fill="#74C7FF"/>
+<path d="M400 0H0V40H400V0Z" fill="#74C7FF"/>
+<path d="M400 40H0V120H400V40Z" fill="black"/>
+<path d="M400 200H200V240H400V200Z" fill="black"/>
+<path d="M120 280H0V360H120V280Z" fill="black"/>
+<path d="M400 280H280V360H400V280Z" fill="black"/>
 </svg>

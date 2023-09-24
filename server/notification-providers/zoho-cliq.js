@@ -47,7 +47,7 @@ class ZohoCliq extends NotificationProvider {
         monitorUrl,
     }) => {
         const payload = [];
-        payload.push("### Uptime Kuma\n");
+        payload.push("### C8 Digital Server Monitoring\n");
         payload.push(this._statusMessageFactory(status, monitorName));
         payload.push(`*Description:* ${monitorMessage}`);
 

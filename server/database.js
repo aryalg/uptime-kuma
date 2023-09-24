@@ -64,7 +64,7 @@ class Database {
         "patch-added-mqtt-monitor.sql": true,
         "patch-add-clickable-status-page-link.sql": true,
         "patch-add-sqlserver-monitor.sql": true,
-        "patch-add-other-auth.sql": { parents: [ "patch-monitor-basic-auth.sql" ] },
+        "patch-add-other-auth.sql": { parents: ["patch-monitor-basic-auth.sql"] },
         "patch-grpc-monitor.sql": true,
         "patch-add-radius-monitor.sql": true,
         "patch-monitor-add-resend-interval.sql": true,
@@ -109,24 +109,24 @@ class Database {
         Database.dataDir = process.env.DATA_DIR || args["data-dir"] || "./data/";
 
         Database.sqlitePath = path.join(Database.dataDir, "kuma.db");
-        if (! fs.existsSync(Database.dataDir)) {
+        if (!fs.existsSync(Database.dataDir)) {
             fs.mkdirSync(Database.dataDir, { recursive: true });
         }
 
         Database.uploadDir = path.join(Database.dataDir, "upload/");
 
-        if (! fs.existsSync(Database.uploadDir)) {
+        if (!fs.existsSync(Database.uploadDir)) {
             fs.mkdirSync(Database.uploadDir, { recursive: true });
         }
 
         // Create screenshot dir
         Database.screenshotDir = path.join(Database.dataDir, "screenshots/");
-        if (! fs.existsSync(Database.screenshotDir)) {
+        if (!fs.existsSync(Database.screenshotDir)) {
             fs.mkdirSync(Database.screenshotDir, { recursive: true });
         }
 
         Database.dockerTLSDir = path.join(Database.dataDir, "docker-tls/");
-        if (! fs.existsSync(Database.dockerTLSDir)) {
+        if (!fs.existsSync(Database.dockerTLSDir)) {
             fs.mkdirSync(Database.dockerTLSDir, { recursive: true });
         }
 
@@ -196,7 +196,7 @@ class Database {
 
         if (dbConfig.type === "sqlite") {
 
-            if (! fs.existsSync(Database.sqlitePath)) {
+            if (!fs.existsSync(Database.sqlitePath)) {
                 log.info("server", "Copying Database");
                 fs.copyFileSync(Database.templatePath, Database.sqlitePath);
             }
@@ -345,7 +345,7 @@ class Database {
      * @returns {void}
      */
     static async patch() {
-        // Still need to keep this for old versions of Uptime Kuma
+        // Still need to keep this for old versions of C8 Digital Server Monitoring
         if (Database.dbConfig.type === "sqlite") {
             await this.patchSqlite();
         }
@@ -361,7 +361,7 @@ class Database {
             // Allow missing patch files for downgrade or testing pr.
             if (e.message.includes("the following files are missing:")) {
                 log.warn("db", e.message);
-                log.warn("db", "Database migration failed, you may be downgrading Uptime Kuma.");
+                log.warn("db", "Database migration failed, you may be downgrading C8 Digital Server Monitoring.");
             } else {
                 log.error("db", "Database migration failed");
                 throw e;
@@ -385,7 +385,7 @@ class Database {
     static async patchSqlite() {
         let version = parseInt(await setting("database_version"));
 
-        if (! version) {
+        if (!version) {
             version = 0;
         }
 
@@ -434,7 +434,7 @@ class Database {
         log.info("db", "Database Patch 2.0 Process");
         let databasePatchedFiles = await setting("databasePatchedFiles");
 
-        if (! databasePatchedFiles) {
+        if (!databasePatchedFiles) {
             databasePatchedFiles = {};
         }
 
@@ -543,13 +543,13 @@ class Database {
     static async patch2Recursion(sqlFilename, databasePatchedFiles) {
         let value = this.patchList[sqlFilename];
 
-        if (! value) {
+        if (!value) {
             log.info("db", sqlFilename + " skip");
             return;
         }
 
         // Check if patched
-        if (! databasePatchedFiles[sqlFilename]) {
+        if (!databasePatchedFiles[sqlFilename]) {
             log.info("db", sqlFilename + " is not patched");
 
             if (value.parents) {
@@ -584,7 +584,7 @@ class Database {
         // Remove all comments (--)
         let lines = text.split("\n");
         lines = lines.filter((line) => {
-            return ! line.startsWith("--");
+            return !line.startsWith("--");
         });
 
         // Split statements by semicolon

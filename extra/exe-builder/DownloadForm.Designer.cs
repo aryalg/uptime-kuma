@@ -31,31 +31,31 @@ namespace UptimeKuma {
             this.label = new System.Windows.Forms.Label();
             this.labelData = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
+            //
             // progressBar
-            // 
+            //
             this.progressBar.Location = new System.Drawing.Point(12, 12);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(472, 41);
             this.progressBar.TabIndex = 0;
-            // 
+            //
             // label
-            // 
+            //
             this.label.Location = new System.Drawing.Point(12, 59);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(472, 23);
             this.label.TabIndex = 1;
             this.label.Text = "Preparing...";
-            // 
+            //
             // labelData
-            // 
+            //
             this.labelData.Location = new System.Drawing.Point(12, 82);
             this.labelData.Name = "labelData";
             this.labelData.Size = new System.Drawing.Size(472, 23);
             this.labelData.TabIndex = 2;
-            // 
+            //
             // DownloadForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 117);
@@ -67,7 +67,7 @@ namespace UptimeKuma {
             this.MaximizeBox = false;
             this.Name = "DownloadForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Uptime Kuma";
+            this.Text = "C8 Digital Server Monitoring";
             this.Load += new System.EventHandler(this.DownloadForm_Load);
             this.ResumeLayout(false);
         }

@@ -475,7 +475,7 @@
     "webhookBodyCustomOption": "حسب ضرورت باڈی",
     "Select": "منتخب کریں",
     "selectedMonitorCount": "منتخب کردہ: {0}",
-    "tailscalePingWarning": "Tailscale Ping مانیٹر استعمال کرنے کے لیے، آپ کو Docker کے بغیر Uptime Kuma انسٹال کرنا ہوگا اور اپنے سرور پر Tailscale کلائنٹ بھی انسٹال کرنا ہوگا۔",
+    "tailscalePingWarning": "Tailscale Ping مانیٹر استعمال کرنے کے لیے، آپ کو Docker کے بغیر C8 Digital Server Monitoring انسٹال کرنا ہوگا اور اپنے سرور پر Tailscale کلائنٹ بھی انسٹال کرنا ہوگا۔",
     "uninstall": "ان انسٹال کریں",
     "Invert Keyword": "مطلوبہ الفاظ کو الٹ دیں",
     "Expected Value": "متوقع قدر",
